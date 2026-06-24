@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/*
+  Diamond Concrete Sealing — design tokens
+  Identity: slate + warm amber (distinct from the reference site's black/white/yellow).
+  Tailwind v4 ships slate/stone/amber scales by default; we add a few brand semantics.
+*/
+@theme {
+  --font-display: var(--font-oswald);
+  --font-sans: var(--font-inter);
+
+  --color-ink: #0a0e14;          /* near-black slate, page base */
+  --color-surface: #11161f;      /* raised slate surface */
+  --color-surface-2: #1a212c;    /* cards / inputs */
+  --color-line: #2a3340;         /* hairline borders */
+  --color-brand: #f0a235;        /* warm amber accent */
+  --color-brand-strong: #d8842a; /* amber hover/pressed */
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Guard against any element causing horizontal scroll on small screens. */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  background-color: var(--color-ink);
+  color: #e7ecf3;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Condensed, confident display headings */
+.font-display {
+  font-family: var(--font-display), Impact, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+}
+
+/* Reusable section rhythm */
+.section-x {
+  padding-inline: clamp(1.25rem, 5vw, 5rem);
+}
+
+::selection {
+  background: var(--color-brand);
+  color: #0a0e14;
+}
