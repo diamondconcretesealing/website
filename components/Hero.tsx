@@ -28,30 +28,30 @@ export async function Hero() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink to-transparent" />
 
       <div className="section-x">
-        <div className="mx-auto flex min-h-[88svh] max-w-6xl flex-col justify-end pb-24 pt-28 sm:pb-28 sm:pt-32">
+        <div className="mx-auto flex min-h-[88svh] max-w-6xl flex-col justify-end pb-12 pt-24 sm:pb-28 sm:pt-32">
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-brand">
             {business.city}, {business.provinceAbbr} · Concrete Specialists
           </p>
 
           {/* Offset, oversized wordmark — asymmetric, not centered */}
-          <h1 className="font-display max-w-4xl text-white text-6xl sm:text-7xl md:text-8xl">
+          <h1 className="font-display max-w-4xl text-white text-5xl sm:text-7xl md:text-8xl">
             Diamond
             <span className="block text-brand">Concrete Sealing</span>
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg text-white/80">
+          <p className="mt-4 max-w-xl text-base text-white/80 sm:mt-6 sm:text-lg">
             Premium sealing, crack repair, and concrete restoration that protects your concrete
             against Alberta winters — and makes it look better than the day it was poured.
           </p>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-6 flex flex-col gap-3 sm:mt-9 sm:flex-row">
             <Button href="#contact">Get a Free Quote</Button>
             <Button href={business.phoneHref} variant="outline" shine>
               Call {business.phoneDisplay}
             </Button>
           </div>
 
-          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-white/70">
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-white/70 sm:mt-10">
             <span className="flex items-center gap-1.5">
               {/* mobile: single star to match the other trust icons; full rating on sm+ */}
               <StarIcon className="sm:hidden" />
