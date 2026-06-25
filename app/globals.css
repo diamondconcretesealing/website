@@ -56,3 +56,40 @@ body {
   background: var(--color-brand);
   color: #0a0e14;
 }
+
+/* Floating scroll-down cue in the hero */
+@keyframes hero-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+.animate-hero-bob {
+  animation: hero-bob 2s ease-in-out infinite;
+}
+
+/* Occasional sheen sweep across a CTA — brief reflection, then idle */
+@keyframes btn-shine {
+  0% {
+    transform: translateX(-250%) skewX(-12deg);
+  }
+  12% {
+    transform: translateX(350%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(350%) skewX(-12deg);
+  }
+}
+.animate-btn-shine {
+  animation: btn-shine 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-bob,
+  .animate-btn-shine {
+    animation: none;
+  }
+}

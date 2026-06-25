@@ -28,7 +28,7 @@ export async function Hero() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink to-transparent" />
 
       <div className="section-x">
-        <div className="mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-end pb-16 pt-32 sm:pb-24">
+        <div className="mx-auto flex min-h-[88svh] max-w-6xl flex-col justify-end pb-24 pt-28 sm:pb-28 sm:pt-32">
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-brand">
             {business.city}, {business.provinceAbbr} · Concrete Specialists
           </p>
@@ -46,23 +46,70 @@ export async function Hero() {
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Button href="#contact">Get a Free Quote</Button>
-            <Button href={business.phoneHref} variant="outline">
+            <Button href={business.phoneHref} variant="outline" shine>
               Call {business.phoneDisplay}
             </Button>
           </div>
 
           <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-white/70">
             <span className="flex items-center gap-1.5">
-              <StarRating rating={rating} />
+              {/* mobile: single star to match the other trust icons; full rating on sm+ */}
+              <StarIcon className="sm:hidden" />
+              <span className="hidden sm:inline-flex">
+                <StarRating rating={rating} />
+              </span>
               {ratingLabel} on Google
             </span>
             <span className="hidden sm:inline text-line">|</span>
-            <span>Serving {business.areaSummary}</span>
+            <span className="flex items-center gap-1.5">
+              <PinIcon />
+              Serving {business.areaSummary}
+            </span>
             <span className="hidden sm:inline text-line">|</span>
-            <span>Premium materials, lasting results</span>
+            <span className="flex items-center gap-1.5">
+              <ShieldCheckIcon />
+              Premium materials, lasting results
+            </span>
           </div>
         </div>
       </div>
+
+      {/* Floating scroll cue */}
+      <a
+        href="#about"
+        aria-label="Scroll to learn more"
+        className="animate-hero-bob absolute bottom-6 left-1/2 -translate-x-1/2 text-white/60 transition-colors hover:text-brand"
+      >
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 5v14M6 13l6 6 6-6" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </a>
     </section>
+  );
+}
+
+function StarIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={`text-brand ${className}`}>
+      <path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 18.9 6.1 21.5l1.2-6.5L2.5 9.4l6.6-.9L12 2.5Z" />
+    </svg>
+  );
+}
+
+function PinIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="text-brand">
+      <path d="M12 21s7-5.686 7-11a7 7 0 1 0-14 0c0 5.314 7 11 7 11Z" stroke="currentColor" strokeWidth="1.75" strokeLinejoin="round" />
+      <circle cx="12" cy="10" r="2.5" stroke="currentColor" strokeWidth="1.75" />
+    </svg>
+  );
+}
+
+function ShieldCheckIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="text-brand">
+      <path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3Z" stroke="currentColor" strokeWidth="1.75" strokeLinejoin="round" />
+      <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }

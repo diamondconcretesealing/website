@@ -17,6 +17,7 @@ type Props = {
  */
 export function BeforeAfter({ before, after, alt }: Props) {
   const [pos, setPos] = useState(50);
+  const [moved, setMoved] = useState(false);
 
   return (
     <div className="relative h-full w-full select-none overflow-hidden">
@@ -52,12 +53,26 @@ export function BeforeAfter({ before, after, alt }: Props) {
         className="pointer-events-none absolute inset-y-0 w-px bg-white/80"
         style={{ left: `${pos}%` }}
       >
-        <span className="absolute top-1/2 left-1/2 flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-brand bg-surface text-brand">
+        <span
+          className={`absolute top-1/2 left-1/2 flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-brand bg-surface text-brand ${
+            moved ? "" : "animate-pulse"
+          }`}
+        >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M9 6l-5 6 5 6M15 6l5 6-5 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </span>
       </div>
+
+      {/* affordance hint — fades out once the user drags */}
+      {!moved && (
+        <span className="pointer-events-none absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-full border border-line bg-ink/70 px-3 py-1 font-display text-[10px] uppercase tracking-wider text-white/85 backdrop-blur-sm">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M9 6l-5 6 5 6M15 6l5 6-5 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          Drag to compare
+        </span>
+      )}
 
       {/* full-area control: pointer drag + keyboard */}
       <input
@@ -65,7 +80,10 @@ export function BeforeAfter({ before, after, alt }: Props) {
         min={0}
         max={100}
         value={pos}
-        onChange={(e) => setPos(Number(e.target.value))}
+        onChange={(e) => {
+          setPos(Number(e.target.value));
+          setMoved(true);
+        }}
         aria-label={`${alt}: drag to compare before and after`}
         className="absolute inset-0 h-full w-full cursor-ew-resize appearance-none bg-transparent opacity-0"
       />
