@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Oswald, Inter } from "next/font/google";
 import "./globals.css";
 import { business } from "@/lib/content";
@@ -22,6 +22,12 @@ const ogImage = {
   width: 1200,
   height: 630,
   alt: "Diamond Concrete Sealing — sealed concrete driveway in Okotoks, AB",
+};
+
+// viewport-fit=cover lets the hero paint edge-to-edge behind iOS Safari's
+// floating "liquid glass" bars; components use env(safe-area-inset-*) to stay clear.
+export const viewport: Viewport = {
+  viewportFit: "cover",
 };
 
 export const metadata: Metadata = {
