@@ -78,7 +78,7 @@ export async function Hero() {
       <a
         href="#about"
         aria-label="Scroll to learn more"
-        className="animate-hero-bob absolute bottom-[calc(1.5rem_+_env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 text-white/60 transition-colors hover:text-brand"
+        className="animate-hero-bob absolute bottom-[calc(2.5rem_+_env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 text-white/60 transition-colors hover:text-brand"
       >
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M12 5v14M6 13l6 6 6-6" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
