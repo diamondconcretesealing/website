@@ -168,6 +168,9 @@ export function Lightbox({ items, index, onClose, onNavigate }: LightboxProps) {
             width={item.width}
             height={item.height}
             sizes="(max-width: 768px) 92vw, 80vw"
+            {...(item.lqip
+              ? { placeholder: "blur" as const, blurDataURL: item.lqip }
+              : {})}
             onLoad={() => setLoadedIndex(index)}
             className={`h-auto max-h-[72vh] w-auto max-w-full rounded-xl border border-line object-contain transition-opacity duration-300 ${
               loaded ? "opacity-100" : "opacity-0"

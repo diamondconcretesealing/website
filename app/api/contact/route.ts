@@ -151,8 +151,10 @@ export async function POST(request: Request) {
     at: new Date().toISOString(),
   };
 
-  // Backup of record — survives even if email delivery fails.
-  console.log("[contact] new quote request:", lead);
+  // Backup of record — survives even if email delivery fails. Uses console.warn
+  // (not log) so it's preserved in production builds where compiler.removeConsole
+  // strips console.log (see next.config.ts).
+  console.warn("[contact] new quote request:", lead);
 
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {

@@ -12,6 +12,8 @@ export const projectsQuery = groq`
     image,
     // Natural dimensions drive the lightbox's aspect-correct full-size render
     // (the grid tile is a forced square crop; the lightbox shows the real ratio).
-    "dimensions": image.asset->metadata.dimensions
+    "dimensions": image.asset->metadata.dimensions,
+    // Tiny base64 preview Sanity stores per asset — used as the next/image blur.
+    "lqip": image.asset->metadata.lqip
   }
 `;

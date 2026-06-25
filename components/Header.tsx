@@ -20,12 +20,11 @@ export function Header() {
               src={logoWhite}
               alt="Diamond Concrete Sealing"
               className="h-8 w-auto sm:h-9"
-              preload
             />
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-7 lg:flex">
+          <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
             {nav.map((item) => (
               <Link
                 key={item.href}
@@ -65,7 +64,7 @@ export function Header() {
       {/* Mobile drawer */}
       {open && (
         <div className="lg:hidden border-t border-line bg-ink">
-          <nav className="section-x flex flex-col gap-1 py-4">
+          <nav aria-label="Mobile" className="section-x flex flex-col gap-1 py-4">
             {nav.map((item) => (
               <Link
                 key={item.href}

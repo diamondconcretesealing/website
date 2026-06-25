@@ -3,6 +3,7 @@ import { Section, SectionHeading } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { services } from "@/lib/content";
+import { blurProps } from "@/lib/blur";
 
 export function Services() {
   return (
@@ -37,6 +38,7 @@ export function Services() {
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className={`${s.imageFit ?? "object-cover"} transition-transform duration-500 group-hover:scale-105`}
+                  {...blurProps(s.image)}
                 />
               )}
             </div>

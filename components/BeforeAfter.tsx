@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { blurProps } from "@/lib/blur";
 
 type Props = {
   before: string;
@@ -28,6 +29,7 @@ export function BeforeAfter({ before, after, alt }: Props) {
         fill
         sizes="(max-width: 768px) 100vw, 50vw"
         className="object-cover"
+        {...blurProps(after)}
       />
 
       {/* BEFORE — clipped to the left of the handle */}
@@ -38,6 +40,7 @@ export function BeforeAfter({ before, after, alt }: Props) {
         sizes="(max-width: 768px) 100vw, 50vw"
         className="object-cover"
         style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
+        {...blurProps(before)}
       />
 
       {/* corner labels */}

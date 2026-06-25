@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { business } from "@/lib/content";
+import { blurProps } from "@/lib/blur";
 
 export function About() {
   return (
@@ -41,6 +42,7 @@ export function About() {
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover"
+            {...blurProps("/images/gbp/photo-1.jpg")}
           />
         </div>
       </div>

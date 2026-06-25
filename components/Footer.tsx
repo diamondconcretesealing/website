@@ -40,8 +40,8 @@ export function Footer() {
           </div>
 
           {/* Menu */}
-          <nav>
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-white/50">Menu</h3>
+          <nav aria-label="Footer">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-white/50">Menu</h2>
             <ul className="mt-4 space-y-2">
               {nav.map((item) => (
                 <li key={item.href}>
@@ -58,19 +58,19 @@ export function Footer() {
 
           {/* Hours (condensed) */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-white/50">Hours</h3>
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-white/50">Hours</h2>
             <ul className="mt-4 space-y-1.5">
               {hourGroups.map((g) => (
                 <li key={g.label} className="text-sm">
                   <span className="text-white/70">{g.label}</span>{" "}
-                  <span className={g.closed ? "text-white/40" : "text-white/80"}>{g.time}</span>
+                  <span className={g.closed ? "text-white/55" : "text-white/80"}>{g.time}</span>
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        <div className="mx-auto mt-10 flex max-w-6xl flex-col gap-2 border-t border-line pt-6 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto mt-10 flex max-w-6xl flex-col gap-2 border-t border-line pt-6 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {business.name}. All rights reserved.
           </p>

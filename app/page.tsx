@@ -9,6 +9,7 @@ import { Reviews } from "@/components/Reviews";
 import { FAQ } from "@/components/FAQ";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { JsonLd } from "@/components/JsonLd";
 
 // Rebuild the page at most once an hour so newly published Sanity projects
 // appear without a manual deploy. No webhooks to configure or break.
@@ -18,7 +19,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         <Hero />
         <About />
         <Services />
@@ -30,6 +31,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <JsonLd />
     </>
   );
 }

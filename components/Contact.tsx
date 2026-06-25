@@ -117,7 +117,7 @@ export function Contact() {
               <textarea
                 name="message"
                 rows={4}
-                className="w-full rounded-lg border border-line bg-surface-2 px-4 py-3 text-white placeholder-white/30 focus:border-brand focus:outline-none"
+                className="w-full rounded-lg border border-line bg-surface-2 px-4 py-3 text-white placeholder-white/30 focus:border-brand"
                 placeholder="Driveway size, current condition, what you're after…"
               />
             </label>
@@ -171,7 +171,7 @@ function Field({
         type={type}
         name={name}
         required={required}
-        className="w-full rounded-lg border border-line bg-surface-2 px-4 py-3 text-white placeholder-white/30 focus:border-brand focus:outline-none"
+        className="w-full rounded-lg border border-line bg-surface-2 px-4 py-3 text-white placeholder-white/30 focus:border-brand"
       />
     </label>
   );

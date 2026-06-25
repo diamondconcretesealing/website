@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/Button";
 import { StarRating } from "@/components/ui/StarRating";
+import { HeroVideo } from "@/components/HeroVideo";
 import { business } from "@/lib/content";
 import { getReviewStats } from "@/lib/featurableStats";
 
@@ -10,18 +11,9 @@ export async function Hero() {
 
   return (
     <section id="top" className="relative isolate min-h-[calc(100lvh_-_4rem_-_env(safe-area-inset-top))] overflow-hidden">
-      {/* Background video (self-hosted at public/hero.mp4). The poster image shows
-          instantly and covers slow connections / reduced-data while the clip loads. */}
-      <video
-        className="absolute inset-0 -z-20 h-full w-full object-cover"
-        autoPlay
-        loop
-        muted
-        playsInline
-        poster="/images/hero-poster.jpg"
-      >
-        <source src="/hero.mp4" type="video/mp4" />
-      </video>
+      {/* Background media: optimized poster (LCP) + a WebM/MP4 video that fades
+          in once ready, skipped entirely under reduced-motion / Save-Data. */}
+      <HeroVideo />
 
       {/* Slate gradient overlay for contrast + brand tone */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-ink/95 via-ink/80 to-ink/55" />
@@ -30,7 +22,7 @@ export async function Hero() {
       <div className="section-x">
         <div className="mx-auto flex min-h-[88svh] max-w-6xl flex-col justify-end pb-12 pt-24 sm:pb-28 sm:pt-32">
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-brand">
-            {business.city}, {business.provinceAbbr} · Concrete Specialists
+            Concrete Sealing &amp; Repair · {business.city}, {business.provinceAbbr}
           </p>
 
           {/* Offset, oversized wordmark — asymmetric, not centered */}

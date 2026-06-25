@@ -2,7 +2,14 @@
 
 import { useId, useRef, useState } from "react";
 import Image from "next/image";
-import { Lightbox } from "@/components/Lightbox";
+import dynamic from "next/dynamic";
+
+// Heaviest component in the gallery (portal, keyboard trap, 11 hooks) and only
+// needed after a tap — load it on demand to keep it out of the initial bundle.
+const Lightbox = dynamic(
+  () => import("@/components/Lightbox").then((m) => m.Lightbox),
+  { ssr: false }
+);
 
 export type GalleryItem = {
   id: string;
@@ -14,6 +21,8 @@ export type GalleryItem = {
   full: string;
   width: number;
   height: number;
+  // Sanity-provided base64 blur placeholder.
+  lqip?: string;
 };
 
 // Tiles shown before the "View More" card appears. The first tile renders as a
@@ -101,6 +110,9 @@ export function ProjectsGallery({ items }: { items: GalleryItem[] }) {
               fill
               sizes="(max-width: 1024px) 50vw, 33vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
+              {...(item.lqip
+                ? { placeholder: "blur" as const, blurDataURL: item.lqip }
+                : {})}
             />
           </button>
           {item.caption && (
@@ -131,8 +143,8 @@ export function ProjectsGallery({ items }: { items: GalleryItem[] }) {
           aria-controls={gridId}
           aria-label={
             allShown
-              ? "Show fewer projects"
-              : `Show more projects, ${remaining} more available`
+              ? "Show less projects"
+              : `View more projects, ${remaining} more available`
           }
           className="group col-span-2 flex aspect-[2/1] flex-col items-center justify-center gap-1 rounded-xl border border-line bg-surface-2 transition-colors duration-200 hover:border-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink lg:col-span-1 lg:aspect-square"
         >

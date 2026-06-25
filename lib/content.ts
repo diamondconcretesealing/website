@@ -34,7 +34,21 @@ export const business = {
   // (sealing/repair/protection — not decorative staining).
   description:
     "Diamond Concrete Sealing is the leading expert in concrete solutions, providing diverse, high-quality sealing, repair, and surface-protection options tailored to every budget and project scope. We use premium materials to guarantee superior, long-lasting results.",
+
+  // Okotoks town centroid — drives LocalBusiness `geo` in the JSON-LD. Public,
+  // non-sensitive coordinates (service-area business with no street address).
+  geo: { lat: 50.7256, lng: -113.9749 },
+  // Mid-range price signal for LocalBusiness schema (no public pricing published).
+  priceRange: "$$",
 } as const;
+
+// Canonical production origin — single source for metadataBase, canonical tags,
+// sitemap, robots, OG, and JSON-LD. Override per-environment with the
+// NEXT_PUBLIC_SITE_URL env var (set it in the Vercel project settings); the
+// fallback is the production custom domain.
+export const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://diamondconcretesealing.com"
+).replace(/\/$/, "");
 
 export const hours = [
   { day: "Monday", time: "8:00 AM – 5:00 PM", closed: false },

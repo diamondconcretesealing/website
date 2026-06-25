@@ -56,6 +56,11 @@ scripts/.sanity-token
 # raw customer photo originals (multi-MB) — resized copies live in public/images/
 /Customer Photos/
 
+# unused source media — not referenced in code or shipped to the browser; kept
+# out of clone/CI weight.
+/clips/
+/reference/
+
 # scratch artifacts (phone photos + email previews)
 /IMG_*.jpg
 /IMG_*.jpeg

@@ -135,9 +135,9 @@ export function Select({
           aria-labelledby={`${labelId} ${listId}-btn`}
           onClick={() => (open ? setOpen(false) : openList())}
           onKeyDown={onKeyDown}
-          className="flex w-full items-center justify-between rounded-lg border border-line bg-surface-2 px-4 py-3 text-left text-white focus:border-brand focus:outline-none"
+          className="flex w-full items-center justify-between rounded-lg border border-line bg-surface-2 px-4 py-3 text-left text-white focus:border-brand"
         >
-          <span id={`${listId}-btn`} className={value ? "text-white" : "text-white/30"}>
+          <span id={`${listId}-btn`} className={value ? "text-white" : "text-white/55"}>
             {value || placeholder}
           </span>
           <svg

@@ -1,7 +1,7 @@
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { StarRating } from "@/components/ui/StarRating";
-import { GoogleReviewsWidget } from "@/components/GoogleReviewsWidget";
+import { GoogleReviewsLazy } from "@/components/GoogleReviewsLazy";
 import { business, trustSignals, googleUrl } from "@/lib/content";
 import { getReviewStats } from "@/lib/featurableStats";
 
@@ -65,7 +65,7 @@ export async function Reviews() {
 
       {featurableWidgetId && (
         <div className="mt-14">
-          <GoogleReviewsWidget widgetId={featurableWidgetId} />
+          <GoogleReviewsLazy widgetId={featurableWidgetId} />
         </div>
       )}
     </Section>

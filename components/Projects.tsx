@@ -12,6 +12,7 @@ type ProjectDoc = {
   alt?: string;
   image: SanityImageSource;
   dimensions?: { width: number; height: number; aspectRatio: number };
+  lqip?: string;
 };
 
 async function getProjects(): Promise<ProjectDoc[]> {
@@ -68,6 +69,7 @@ export async function Projects() {
       full: urlFor(p.image).width(fullWidth).fit("max").auto("format").url(),
       width: fullWidth,
       height: fullHeight,
+      lqip: p.lqip,
     };
   });
 

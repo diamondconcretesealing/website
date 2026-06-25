@@ -1,17 +1,19 @@
 import type { Metadata, Viewport } from "next";
 import { Oswald, Inter } from "next/font/google";
 import "./globals.css";
-import { business } from "@/lib/content";
+import { business, siteUrl } from "@/lib/content";
 
 const oswald = Oswald({
   variable: "--font-oswald",
   subsets: ["latin"],
   weight: ["500", "600", "700"],
+  display: "swap",
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const description =
@@ -28,11 +30,14 @@ const ogImage = {
 // floating "liquid glass" bars; components use env(safe-area-inset-*) to stay clear.
 export const viewport: Viewport = {
   viewportFit: "cover",
+  // Matches --color-ink / the manifest background — the dark-only canvas.
+  themeColor: "#0a0e14",
 };
 
 export const metadata: Metadata = {
-  // Real deployed origin so og:image and other relative URLs resolve in link previews.
-  metadataBase: new URL("https://diamond-concrete-sealing.vercel.app"),
+  // Canonical production origin (env-overridable) so canonical/og/relative URLs
+  // resolve to the real domain, not the *.vercel.app preview host.
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Diamond Concrete Sealing | Okotoks, AB",
     template: "%s | Diamond Concrete Sealing",
@@ -46,6 +51,18 @@ export const metadata: Metadata = {
     "pressure washing Okotoks",
     "asphalt repair Okotoks",
   ],
+  alternates: { canonical: "/" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     title: "Diamond Concrete Sealing",
     description,
@@ -73,7 +90,12 @@ export default function RootLayout({
       lang="en"
       className={`${oswald.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
+        {children}
+      </body>
     </html>
   );
 }
