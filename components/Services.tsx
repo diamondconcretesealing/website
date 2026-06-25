@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
+import { BeforeAfter } from "@/components/BeforeAfter";
 import { services } from "@/lib/content";
 
 export function Services() {
@@ -27,13 +28,17 @@ export function Services() {
                 i % 2 === 1 ? "md:order-2" : ""
               }`}
             >
-              <Image
-                src={s.image}
-                alt={s.name}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
+              {s.compare ? (
+                <BeforeAfter before={s.compare.before} after={s.compare.after} alt={s.name} />
+              ) : (
+                <Image
+                  src={s.image}
+                  alt={s.name}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className={`${s.imageFit ?? "object-cover"} transition-transform duration-500 group-hover:scale-105`}
+                />
+              )}
             </div>
 
             <div className="flex flex-col justify-center gap-4 p-8 sm:p-10">

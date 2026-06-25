@@ -53,6 +53,9 @@ scripts/.sanity-token
 /.claude/
 /CLAUDE.md
 
+# raw customer photo originals (multi-MB) — resized copies live in public/images/
+/Customer Photos/
+
 # scratch artifacts (phone photos + email previews)
 /IMG_*.jpg
 /IMG_*.jpeg

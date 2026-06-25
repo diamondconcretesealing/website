@@ -62,6 +62,12 @@ export type Service = {
   body: string;
   image: string;
   points: string[];
+  // When set, the service card shows a draggable before/after slider instead of
+  // a single image. `image` stays as the static fallback (use the "after" shot).
+  compare?: { before: string; after: string };
+  // Tailwind object-fit override for the card image (default "object-cover").
+  // Use "object-contain" for tall/portrait shots that crop badly when filled.
+  imageFit?: string;
 };
 
 // Services match the business's printed marketing brochure (the authoritative
@@ -74,7 +80,7 @@ export const services: Service[] = [
     name: "Concrete Sealing",
     blurb: "Lock out water, salt, and freeze-thaw damage.",
     body: "Our premium penetrating and topical sealers shield driveways, garage floors, patios, and walkways from Alberta's harsh freeze-thaw cycles, road salt, and UV fading — keeping your concrete strong and sharp for years.",
-    image: "/images/gbp/photo-3.jpg",
+    image: "/images/services/concrete-sealing.jpg",
     points: ["Driveways & walkways", "Garage floors", "Patios & steps"],
   },
   {
@@ -90,7 +96,12 @@ export const services: Service[] = [
     name: "Crack Repairs",
     blurb: "Stop small cracks becoming big problems.",
     body: "Left untreated, cracks let in water that freezes, expands, and tears concrete apart. We clean, fill, and seal cracks to halt the damage and restore a smooth, protected surface.",
-    image: "/images/gbp/photo-6.jpg",
+    // Real before/after of a repaired crack — rendered as a draggable slider.
+    image: "/images/services/crack-after.jpg",
+    compare: {
+      before: "/images/services/crack-before.jpg",
+      after: "/images/services/crack-after.jpg",
+    },
     points: ["Flexible crack filling", "Surface prep & cleaning", "Prevents costly repairs"],
   },
   {
@@ -124,9 +135,7 @@ export const services: Service[] = [
     name: "Asphalt Patching & Sealing",
     blurb: "Patch the damage, then sealcoat against the elements.",
     body: "Potholes, cracks, and worn asphalt let water in and spread fast. We patch the damaged areas and apply a protective sealcoat to extend the life of driveways and lots — keeping small problems from turning into a full replacement.",
-    // The commercial asphalt lot (fresh seal + line striping) — the one true
-    // asphalt shot in the library.
-    image: "/images/gbp/photo-5.jpg",
+    image: "/images/services/asphalt-patching-sealing.jpg",
     points: ["Pothole & crack patching", "Sealcoating", "Driveways & lots"],
   },
   {
@@ -134,9 +143,7 @@ export const services: Service[] = [
     name: "Paver Sanding & Sealing",
     blurb: "Lock pavers in place and bring back the colour.",
     body: "We re-sand the joints to stabilize your pavers, then seal the surface to lock the sand in, resist weeds and ants, and deepen the colour — keeping patios, walkways, and driveways tight, clean, and protected.",
-    // Real GBP patio shot reused (closest patio context) — swap in an actual
-    // paver job photo when the owner supplies one.
-    image: "/images/gbp/photo-2.jpg",
+    image: "/images/services/paver-sanding-sealing.jpg",
     points: ["Polymeric joint sanding", "Weed & ant resistance", "Colour-enhancing seal"],
   },
   {
