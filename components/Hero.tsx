@@ -9,7 +9,7 @@ export async function Hero() {
   const ratingLabel = rating.toFixed(1);
 
   return (
-    <section id="top" className="relative isolate overflow-hidden">
+    <section id="top" className="relative isolate min-h-[calc(100svh-4rem)] overflow-hidden">
       {/* Background video (self-hosted at public/hero.mp4). The poster image shows
           instantly and covers slow connections / reduced-data while the clip loads. */}
       <video
